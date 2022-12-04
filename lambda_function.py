@@ -5,7 +5,7 @@ def lambda_handler(event, context):
   try:
     hostname = event['queryStringParameters']['host']
 
-    host = tcpping(hostname, 80, 1, 2, 0.2)
+    host = tcpping(hostname, 80, 1, 1.4, 0.2)
 
     return {
       'statusCode': 200,
