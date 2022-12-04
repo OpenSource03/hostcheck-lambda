@@ -12,6 +12,7 @@ def lambda_handler(event, context):
       'body': json.dumps({
         'success': True,
         'data': {
+          'alive': host.alive,
           'latency': host.avg_rtt,
           'host': event['headers']['Host']
         }
@@ -20,5 +21,11 @@ def lambda_handler(event, context):
   except:
     return {
       'statusCode': 400,
-      'body': json.dumps('Invalid or offline host')
+      'body': json.dumps({
+        'success': False,
+        'data': {
+          'message': 'Invalid or offline host',
+          'host': event['headers']['Host']
+        }
+      })
     }
