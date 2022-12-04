@@ -44,3 +44,11 @@ jobs:
           aws_region: sa-east-1
           function_name: PingerFunction
           zip_file: deployment.zip
+      - name: deploy africa
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: af-south-1
+          function_name: PingerFunction
+          zip_file: deployment.zip
