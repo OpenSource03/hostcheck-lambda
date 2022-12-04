@@ -7,8 +7,9 @@ def lambda_handler(event, context):
 
   try:
     hostname = event['queryStringParameters']['host']
+    port = event['queryStringParameters']['port'] if 'port' in event['queryStringParameters'] else 80
 
-    host = tcpping(hostname, 80, 0.5, 2, 0)
+    host = tcpping(hostname, port, 0.5, 2, 0)
 
     if (host.packets_received < 1):
       return {
